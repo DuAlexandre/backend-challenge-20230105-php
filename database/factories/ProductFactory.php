@@ -17,7 +17,29 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'code'             => $this->faker->randomNumber(),
+            'status'           => $this->faker->word(),
+            'imported_t'       => $this->faker->dateTime(),
+            'url'              => $this->faker->url(),
+            'creator'          => $this->faker->word(),
+            'created_t'        => $this->faker->unixTime(),
+            'last_modified_t'  => $this->faker->unixTime(),
+            'product_name'     => $this->faker->word(),
+            'quantity'         => $this->faker->word(),
+            'brands'           => $this->faker->word(),
+            'categories'       => $this->faker->sentence(),
+            'labels'           => $this->faker->sentence(),
+            'cities'           => $this->faker->word(),
+            'purchase_places'  => $this->faker->word(),
+            'stores'           => $this->faker->word(),
+            'ingredients_text' => $this->faker->sentence(),
+            'traces'           => $this->faker->sentence(),
+            'serving_size'     => $this->faker->sentence(),
+            'serving_quantity' => $this->faker->randomFloat(),
+            'nutriscore_score' => $this->faker->randomNumber(),
+            'nutriscore_grade' => $this->faker->randomLetter(),
+            'main_category'    => $this->faker->word(),
+            'image_url'        => $this->faker->url(),
         ];
     }
 }
