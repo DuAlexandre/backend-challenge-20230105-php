@@ -31,6 +31,7 @@ class ImportData extends Command
     {
         for($i = 1; $i <= 9; $i++)
         {
+            // Get all .gz files
             $gzip_file = 'https://challenges.coode.sh/food/data/json/products_0'.$i.'.json.gz';
             $destination = 'products_0'.$i.'.json';
 
@@ -41,6 +42,7 @@ class ImportData extends Command
             $gzip_handle = gzopen($destination . '.gz', 'rb');
             $json_data = [];
 
+            //Only the first 100 lines of each file
             for ($i = 0; $i < 100; $i++) {
                 $line = gzgets($gzip_handle);
                 if ($line === false) {
@@ -51,6 +53,7 @@ class ImportData extends Command
 
             gzclose($gzip_handle);
 
+            //Removes all unnecessary characters
             $formatterOne = str_replace(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;', '', $json_data);
             $formatterTwo = str_replace(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;', '', $formatterOne);
             $formatterThree = str_replace('"\\', '', $formatterTwo);
@@ -58,8 +61,8 @@ class ImportData extends Command
             $productFinal = str_replace('} {', '},{', $formatterFour );
             
             $status = "";
-            foreach ($productFinal as  $productUnite) {
-                $productData = json_decode($productUnite, true);
+            foreach ($productFinal as  $productUnit) {
+                $productData = json_decode($productUnit, true);
                 $product = Product::updateOrCreate(
                     ['code' => intval( $productData['code'] )],
                     [
@@ -94,6 +97,8 @@ class ImportData extends Command
         }
         $memory = memory_get_usage();
         $memoryConsumed = round($memory / 1024) . 'KB';
+
+        //Records the import statuses in the database
         APIStatus::create(
             [
                 'dateImport'     => now(),

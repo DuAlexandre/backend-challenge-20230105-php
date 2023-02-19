@@ -4,6 +4,9 @@ namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * The Interface of Product Repository
+ */
 interface ProductRepositoryInterface
 {
     public function __construct(Model $model);
