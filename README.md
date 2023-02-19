@@ -182,9 +182,9 @@ Na REST API teremos um CRUD com os seguintes endpoints:
 
 * Entrega: para visualização dos endpoints, consultar documentação da API desenvolvida:
 
-[Documentação API - Fitness Foods LC](ainda.montando)
+[Documentação API - Fitness Foods LC](https://doc-api-fitness-foods.vercel.app/)
 
-[Repositório da Documentação](ainda.montando)
+[Repositório da Documentação](https://github.com/DuAlexandre/doc-api-fitness-foods)
 
 <br>
 
@@ -223,9 +223,9 @@ Descrever a documentação da API utilizando o conceito de Open API 3.0;
 
 * Entrega: Documentação desenvolvida:
 
-[Documentação API - Fitness Foods LC](ainda.montando)
+[Documentação API - Fitness Foods LC](https://doc-api-fitness-foods.vercel.app/)
 
-[Repositório da Documentação](ainda.montando)
+[Repositório da Documentação](https://github.com/DuAlexandre/doc-api-fitness-foods)
 
 <br>
 
