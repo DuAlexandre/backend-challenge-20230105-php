@@ -9,10 +9,20 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
+/**
+ *  Products API Tests
+ */
 class ProductControllerTest extends TestCase
 {
+    /**
+     * Reinitializes the database after every test
+     */
     use RefreshDatabase;
 
+
+    /**
+     * GET ALL PRODUCTS
+     */
     public function test_get_all_products_endpoint(): void
     {
         $products = Product::factory(3)->create();
@@ -109,6 +119,9 @@ class ProductControllerTest extends TestCase
     }
 
 
+    /**
+     * GET PRODUCT BY ID
+     */
     public function test_get_single_product_endpoint(): void
     {
         $product = Product::factory(1)->createOne();
@@ -204,6 +217,9 @@ class ProductControllerTest extends TestCase
     }
 
 
+    /**
+     * CREATE PRODUCT
+     */
     public function test_post_product_endpoint()
     {
         $product = Product::factory(1)->makeOne()->toArray();
@@ -300,6 +316,9 @@ class ProductControllerTest extends TestCase
     }
 
 
+    /**
+     * UPDATE PRODUCT
+     */
     public function test_put_product_endpoint()
     {
         Product::factory(1)->createOne();
@@ -419,7 +438,9 @@ class ProductControllerTest extends TestCase
     }
 
 
-
+    /**
+     * PATCH PRODUCT
+     */
     public function test_patch_product_endpoint()
     {
         Product::factory(1)->createOne();
@@ -493,6 +514,9 @@ class ProductControllerTest extends TestCase
     }
 
 
+    /**
+     * DELETE PRODUCT
+     */
     public function test_delete_product_endpoint()
     {
         Product::factory(1)->createOne();

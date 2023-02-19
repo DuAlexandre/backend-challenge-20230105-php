@@ -8,11 +8,19 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
+/**
+ * API Status tests
+ */
 class APIStatusControllerTest extends TestCase
 {
-    use RefreshDatabase;
     /**
-     * A basic feature test example.
+     * Reinitializes the database after every test
+     */
+    use RefreshDatabase;
+    
+
+    /**
+     * GET ALL STATUS TEST
      */
     public function test_get_all_api_status_endpoint(): void
     {
@@ -39,8 +47,6 @@ class APIStatusControllerTest extends TestCase
                 '0.status'         => $api->status,
                 '0.memoryConsumed' => $api->memoryConsumed
             ]);
-        });
-
-        
+        });  
     }
 }
