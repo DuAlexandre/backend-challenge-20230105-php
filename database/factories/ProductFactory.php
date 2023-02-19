@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'code'             => $this->faker->randomNumber(),
             'status'           => $this->faker->word(),
-            'imported_t'       => $this->faker->dateTime(),
+            'imported_t'       => $this->faker->iso8601(),
             'url'              => $this->faker->url(),
             'creator'          => $this->faker->word(),
             'created_t'        => $this->faker->unixTime(),
@@ -35,7 +35,7 @@ class ProductFactory extends Factory
             'ingredients_text' => $this->faker->sentence(),
             'traces'           => $this->faker->sentence(),
             'serving_size'     => $this->faker->sentence(),
-            'serving_quantity' => $this->faker->randomFloat(),
+            'serving_quantity' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 5),
             'nutriscore_score' => $this->faker->randomNumber(),
             'nutriscore_grade' => $this->faker->randomLetter(),
             'main_category'    => $this->faker->word(),
