@@ -3,6 +3,7 @@
 namespace Tests\Feature\API;
 
 use App\Models\Product;
+use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -25,7 +26,7 @@ class ProductControllerTest extends TestCase
                 '0.id'               => 'integer',
                 '0.code'             => 'integer',
                 '0.status'           => 'string',
-                '0.imported_t'       => 'dateTime',
+                '0.imported_t'       => 'string',
                 '0.url'              => 'string',
                 '0.creator'          => 'string',
                 '0.created_t'        => 'integer',
@@ -41,7 +42,7 @@ class ProductControllerTest extends TestCase
                 '0.ingredients_text' => 'string',
                 '0.traces'           => 'string',
                 '0.serving_size'     => 'string',
-                '0.serving_quantity' => 'float',
+                '0.serving_quantity' => 'double',
                 '0.nutriscore_score' => 'integer',
                 '0.nutriscore_grade' => 'string',
                 '0.main_category'    => 'string',
@@ -150,7 +151,7 @@ class ProductControllerTest extends TestCase
                     'id'               => 'integer',
                     'code'             => 'integer',
                     'status'           => 'string',
-                    'imported_t'       => 'dateTime',
+                    'imported_t'       => 'string',
                     'url'              => 'string',
                     'creator'          => 'string',
                     'created_t'        => 'integer',
@@ -166,7 +167,7 @@ class ProductControllerTest extends TestCase
                     'ingredients_text' => 'string',
                     'traces'           => 'string',
                     'serving_size'     => 'string',
-                    'serving_quantity' => 'float',
+                    'serving_quantity' => 'double',
                     'nutriscore_score' => 'integer',
                     'nutriscore_grade' => 'string',
                     'main_category'    => 'string',
@@ -246,7 +247,7 @@ class ProductControllerTest extends TestCase
                     'id'               => 'integer',
                     'code'             => 'integer',
                     'status'           => 'string',
-                    'imported_t'       => 'dateTime',
+                    'imported_t'       => 'string',
                     'url'              => 'string',
                     'creator'          => 'string',
                     'created_t'        => 'integer',
@@ -262,7 +263,7 @@ class ProductControllerTest extends TestCase
                     'ingredients_text' => 'string',
                     'traces'           => 'string',
                     'serving_size'     => 'string',
-                    'serving_quantity' => 'float',
+                    'serving_quantity' => 'double',
                     'nutriscore_score' => 'integer',
                     'nutriscore_grade' => 'string',
                     'main_category'    => 'string',
@@ -270,7 +271,6 @@ class ProductControllerTest extends TestCase
                 ]);
 
                 $json->whereAll([
-                    'id'               => $product['id'],
                     'code'             => $product['code'],
                     'status'           => $product['status'],
                     'imported_t'       => $product['imported_t'],
@@ -306,7 +306,7 @@ class ProductControllerTest extends TestCase
         $product = [
             'code'             => 20221126,
             'status'           => "published",
-            'imported_t'       => "2020-02-07T16:00:00Z",
+            'imported_t'       => "2020-02-07 16:00:00",
             'url'              => "https://world.openfoodfacts.org/product/20221126",
             'creator'          => "securita",
             'created_t'        => 1415302075,
@@ -316,7 +316,7 @@ class ProductControllerTest extends TestCase
             'brands'           => "La Cestera",
             'categories'       => "Lanches comida, Lanches doces, Biscoitos e Bolos, Bolos, Madalenas",
             'labels'           => "Contem gluten, Contém derivados de ovos, Contém ovos",
-            'cities'           => "",
+            'cities'           => "Lisboa",
             'purchase_places'  => "Braga,Portugal",
             'stores'           => "Lidl",
             'ingredients_text' => "farinha de trigo, açúcar, óleo vegetal de girassol, clara de ovo, ovo, humidificante (sorbitol), levedantes químicos (difosfato dissódico, hidrogenocarbonato de sódio), xarope de glucose-frutose, sal, aroma",
@@ -329,7 +329,7 @@ class ProductControllerTest extends TestCase
             'image_url'        => "https://static.openfoodfacts.org/images/products/20221126/front_pt.5.400.jpg"
         ];
 
-        $response = $this->putJson('/api/product/1', $product);
+        $response = $this->putJson('/api/products/1', $product);
         $response->assertStatus(200);
 
         $response->assertJson(function (AssertableJson $json) use($product){
@@ -367,7 +367,7 @@ class ProductControllerTest extends TestCase
                     'id'               => 'integer',
                     'code'             => 'integer',
                     'status'           => 'string',
-                    'imported_t'       => 'dateTime',
+                    'imported_t'       => 'string',
                     'url'              => 'string',
                     'creator'          => 'string',
                     'created_t'        => 'integer',
@@ -383,7 +383,7 @@ class ProductControllerTest extends TestCase
                     'ingredients_text' => 'string',
                     'traces'           => 'string',
                     'serving_size'     => 'string',
-                    'serving_quantity' => 'float',
+                    'serving_quantity' => 'double',
                     'nutriscore_score' => 'integer',
                     'nutriscore_grade' => 'string',
                     'main_category'    => 'string',
@@ -391,7 +391,6 @@ class ProductControllerTest extends TestCase
                 ]);
 
                 $json->whereAll([
-                    'id'               => $product['id'],
                     'code'             => $product['code'],
                     'status'           => $product['status'],
                     'imported_t'       => $product['imported_t'],
@@ -466,7 +465,7 @@ class ProductControllerTest extends TestCase
                     'id'               => 'integer',
                     'code'             => 'integer',
                     'status'           => 'string',
-                    'imported_t'       => 'dateTime',
+                    'imported_t'       => 'string',
                     'url'              => 'string',
                     'creator'          => 'string',
                     'created_t'        => 'integer',
@@ -482,7 +481,7 @@ class ProductControllerTest extends TestCase
                     'ingredients_text' => 'string',
                     'traces'           => 'string',
                     'serving_size'     => 'string',
-                    'serving_quantity' => 'float',
+                    'serving_quantity' => 'double',
                     'nutriscore_score' => 'integer',
                     'nutriscore_grade' => 'string',
                     'main_category'    => 'string',
