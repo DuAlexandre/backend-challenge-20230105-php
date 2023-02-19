@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('import:openfoodfacts')->timezone('America/Belem')->at('11:35');
+        $schedule->command('import:openfoodfacts')->timezone('America/Belem')->at('23:00');
     }
 
     /**

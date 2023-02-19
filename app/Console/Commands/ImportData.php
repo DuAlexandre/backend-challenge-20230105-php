@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\APIStatus;
 use App\Models\Product;
 use DateTime;
 use Illuminate\Console\Command;
@@ -93,5 +94,12 @@ class ImportData extends Command
         }
         $memory = memory_get_usage();
         $memoryConsumed = round($memory / 1024) . 'KB';
+        APIStatus::create(
+            [
+                'dateImport'     => now(),
+                'status'         => $status,
+                'memoryConsumed' => $memoryConsumed,
+            ]
+        );
     }
 }
