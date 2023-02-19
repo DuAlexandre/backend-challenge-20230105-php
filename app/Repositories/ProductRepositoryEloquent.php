@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Type\Integer;
 
 /**
  * The Eloquent Repository of Products
