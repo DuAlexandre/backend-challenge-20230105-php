@@ -28,7 +28,9 @@ class ProductRepositoryEloquent implements ProductRepositoryInterface
      */
     public function index()
     {
-        return $this->model->paginate(20);
+        $data = $this->model->paginate(20);
+        $result = $data->toArray();
+        return $result["data"];
     }
 
 
