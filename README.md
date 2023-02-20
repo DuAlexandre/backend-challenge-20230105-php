@@ -248,8 +248,11 @@ sail artisan test
 ### Requisito 11 (Extra)
 Escrever um esquema de segurança utilizando API KEY nos endpoints.
 
-* Entrega: Por fazer.
+* Entrega: Os endpoints de `POST`, `PUT`, `PATCH` e `DELETE` possuem proteção de API Keys via `X-CSRF-TOKEN`. Acesse a rota `/token` para geração do mesmo, em seguida em seu API-Client de preferência introduza na aba `Headers` o par chave/valor do respectivo token, como no exemplo abaixo:
 
+<p align="center">
+  <img width="700px" src="./storage/images/token.png" alt="rgr">
+</p>
 <br>
 
 <a id="ancora4"></a>
